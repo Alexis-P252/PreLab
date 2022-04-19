@@ -1,1 +1,37 @@
-/* You can add global styles to this file, and also import other style files */
+
+/* BOTONES */
+
+button {
+    border-radius: 5px;
+    background: rgb(255, 255, 255);
+    padding: 10px;
+    padding-right: 14px;
+    padding-left: 12px;
+    font-size: 17px;
+    transition: all 0.2s;
+   }
+   
+   
+.btn-red {
+    border: 1px solid red;
+    color: red;
+    
+}
+
+.btn-red:hover {
+    background-color: red;
+    color: white;
+    border: 1px solid red;
+}
+
+.btn-green {
+    border: 1px solid seagreen;
+    color: seagreen;
+    
+}
+
+.btn-green:hover {
+    background-color: seagreen;
+    color: white;
+    border: 1px solid seagreen;
+}
