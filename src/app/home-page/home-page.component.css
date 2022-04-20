@@ -1,0 +1,25 @@
+.container{
+    display: flex;
+    justify-content: space-between;
+    padding: 100px;
+    height: 100%;
+}
+
+
+.amarillo{
+    width: 30%;
+    height: 80%;
+    background: yellow;
+}
+
+.azul{
+    width: 30%;
+    height: 400px;
+    background: blue;
+}
+
+.verde{
+    width: 30%;
+    height: 400px;
+    background: green;
+}
