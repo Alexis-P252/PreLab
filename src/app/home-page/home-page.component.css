@@ -1,25 +1,30 @@
-.container{
-    display: flex;
-    justify-content: space-between;
-    padding: 100px;
-    height: 100%;
+* {
+    box-sizing: border-box;
+}
+  
+.column {
+float: left;
+width: 33.3%;
+padding: 0 10px;
 }
 
-
-.amarillo{
-    width: 30%;
-    height: 80%;
-    background: yellow;
+.row {
+    margin-top: 30vh;
 }
 
-.azul{
-    width: 30%;
-    height: 400px;
-    background: blue;
+.row:after {
+content: "";
+display: table;
+clear: both;
 }
 
-.verde{
-    width: 30%;
-    height: 400px;
-    background: green;
+@media screen and (max-width: 600px) {
+.column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+}
+.row {
+    margin-top: 10px;
+}
 }
