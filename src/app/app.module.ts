@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from  '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
 import {RouterModule, Route} from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -38,7 +39,8 @@ const routes: Route[] = [
     BrowserModule,
     BrowserAnimationsModule,
     MatIconModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,45 @@
-<app-navbar></app-navbar>
-<app-footer></app-footer>
-
-<p>client-crud works!</p>
-<button routerLink='' class="btn-red"> Volver </button>
+<div class="container">
+  <div class="create-edit">
+    <div class="modifications">
+      <h3>Registrar cliente</h3>
+      <input
+        placeholder="Documento"
+        name="documento"
+        [(ngModel)]="formulario.documento"
+      />
+      <input
+        placeholder="Nombre"
+        name="nombre"
+        [(ngModel)]="formulario.nombre"
+      />
+      <input
+        placeholder="Apellido"
+        name="apellido"
+        [(ngModel)]="formulario.apellido"
+      />
+      <input
+        type="date"
+        placeholder="Fecha de nacimiento"
+        name="fecha_nac"
+        [(ngModel)]="formulario.fecha_nac"
+      />
+      <input
+        placeholder="Direccion"
+        name="direccion"
+        [(ngModel)]="formulario.direccion"
+      />
+      <input
+        placeholder="Telefono"
+        name="telefono"
+        [(ngModel)]="formulario.telefono"
+      />
+      <button class="btn-green" (click)="onSaveClient()">Registrar</button>
+    </div>
+    <div class="modifications"></div>
+  </div>
+  <div class="create-edit">
+    <div class="list"></div>
+  </div>
+  <p>client-crud works!</p>
+  <button routerLink="" class="btn-red">Volver</button>
+</div>
