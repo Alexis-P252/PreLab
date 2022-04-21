@@ -10,6 +10,7 @@ import { Cliente } from '../cliente';
 export class ClientCrudComponent implements OnInit {
 
   clientes: Cliente[] = [];
+  currentClient: Cliente = {} as Cliente;
 
   formulario = {
     documento: "",
@@ -21,19 +22,20 @@ export class ClientCrudComponent implements OnInit {
   }
 
 
+
   onSaveClient = () => {
     //OBTENER ID AUTOINCREMENTAL
-    let clientes = JSON.parse(localStorage.getItem("clientes") || "[]");
-    let id = clientes.length;
+    this.clientes = JSON.parse(localStorage.getItem("clientes") || "[]");
+    let id = this.clientes.length;
     console.log(id)
 
     //AGREGAR NUEVO ARREGLO DE CLIENTES
     let nuevoCliente = new Cliente(this.formulario.documento, this.formulario.nombre, this.formulario.apellido, this.formulario.fecha_nac, this.formulario.direccion, this.formulario.telefono, id);
     console.log(nuevoCliente)
-    clientes.push(nuevoCliente)
+    this.clientes.push(nuevoCliente)
 
     //GUARDAR EN LOCALSTORAGE
-    localStorage.setItem("clientes", JSON.stringify(clientes));
+    localStorage.setItem("clientes", JSON.stringify(this.clientes));
 
     //LIMPIAR FORMULARIO
     this.formulario = {
@@ -46,9 +48,23 @@ export class ClientCrudComponent implements OnInit {
     }
   }
 
+  selectClient(client: Cliente){
+  
+    console.table(client);  
+    
+  }
+
+  listClients(){
+    // OBTENGO EL ARREGLO DE CLIENTES DEL LOCAL STORAGE
+    this.clientes = JSON.parse(localStorage.getItem("clientes") || "[]");
+  }
+
+  
+
   constructor() { }
 
   ngOnInit(): void {
+    this.listClients();
   }
 
 }
