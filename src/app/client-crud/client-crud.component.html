@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" ng-Init="listClients()">
   <div class="create-edit">
     <div class="modifications">
       <h3>Registrar cliente</h3>
@@ -35,11 +35,23 @@
       />
       <button class="btn-green" (click)="onSaveClient()">Registrar</button>
     </div>
-    <div class="modifications"></div>
+    <div class="modifications">
+      <h3>Administrar clientes</h3>
+    </div>
+    
   </div>
   <div class="create-edit">
-    <div class="list"></div>
+    <div class="list" >
+      <ul class="clientList" id="clientList">
+        <li 
+        *ngFor="let client of clientes"
+        (click) = "selectClient(client)"
+        >
+          ID: {{client.id}} - Nombre: {{client.nombre}} {{client.apellido}} 
+        </li>
+      </ul>
+    </div>
   </div>
-  <p>client-crud works!</p>
+
   <button routerLink="" class="btn-red">Volver</button>
 </div>
