@@ -35,8 +35,43 @@
       />
       <button class="btn-green" (click)="onSaveClient()">Registrar</button>
     </div>
-    <div class="modifications">
+    <div class="modifications" id="editOrDelete">
       <h3>Administrar clientes</h3>
+      <input
+      placeholder="Documento"
+      name="documento"
+      [(ngModel)]="currentClient.documento"
+    />
+    <input
+      placeholder="Nombre"
+      name="nombre"
+      [(ngModel)]="currentClient.nombre"
+    />
+    <input
+      placeholder="Apellido"
+      name="apellido"
+      [(ngModel)]="currentClient.apellido"
+    />
+    <input
+      type="date"
+      placeholder="Fecha de nacimiento"
+      name="fecha_nac"
+      [(ngModel)]="currentClient.fecha_nac"
+    />
+    <input
+      placeholder="Direccion"
+      name="direccion"
+      [(ngModel)]="currentClient.direccion"
+    />
+    <input
+      placeholder="Telefono"
+      name="telefono"
+      [(ngModel)]="currentClient.telefono"
+    />
+    <button class="btn-green" (click)="onEditClient()">Editar</button>
+    <button class="btn-red" (click)="onDeleteClient()">Eliminar</button>
+    <button class="btn-red" (click)="hideEditOrDelete()">Ocultar</button>
+
     </div>
     
   </div>
