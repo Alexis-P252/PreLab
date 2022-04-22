@@ -48,15 +48,40 @@ export class ClientCrudComponent implements OnInit {
     }
   }
 
+  onDeleteClient = () => {
+
+  }
+
+  onEditClient = () => {
+    let obj: Cliente = this.clientes.find(o => o.id === this.currentClient.id)!;
+    obj.documento = this.currentClient.documento;
+    obj.nombre = this.currentClient.nombre;
+    obj.apellido = this.currentClient.apellido;
+    obj.fecha_nac = this.currentClient.fecha_nac;
+    obj.direccion = this.currentClient.direccion;
+    obj.telefono = this.currentClient.telefono;
+    localStorage.setItem("clientes", JSON.stringify(this.clientes));
+    this.hideEditOrDelete();
+    
+
+  }
+
   selectClient(client: Cliente){
-  
-    console.table(client);  
+
+    // HAGO UNA COPIA DEL CLIENTE SELECCIONADO EN LA LISTA
+    this.currentClient = JSON.parse(JSON.stringify(client)) ;
+    document.getElementById("editOrDelete")!.style.display = "flex"; 
+    
     
   }
 
   listClients(){
     // OBTENGO EL ARREGLO DE CLIENTES DEL LOCAL STORAGE
     this.clientes = JSON.parse(localStorage.getItem("clientes") || "[]");
+  }
+
+  hideEditOrDelete(){
+    document.getElementById("editOrDelete")!.style.display = "none"; 
   }
 
   
