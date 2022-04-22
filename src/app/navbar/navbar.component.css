@@ -11,3 +11,12 @@
     width: 100%;
     z-index: 999;
 }
+
+h1 {
+    cursor: pointer;
+}
+
+a{
+    color: white;
+    text-decoration: none;
+}
