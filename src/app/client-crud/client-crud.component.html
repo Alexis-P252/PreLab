@@ -1,4 +1,7 @@
 <div class="container" ng-Init="listClients()">
+  <div class="success-alert">
+    Cambios guardados correctamente
+  </div>
   <div class="create-edit">
     <div class="modifications">
       <h3>Registrar cliente</h3>
@@ -68,12 +71,17 @@
       name="telefono"
       [(ngModel)]="currentClient.telefono"
     />
-    <button class="btn-green" (click)="onEditClient()">Editar</button>
-    <button class="btn-red" (click)="onDeleteClient()">Eliminar</button>
-    <button class="btn-red" (click)="hideEditOrDelete()">Ocultar</button>
+    <div class="button-container">
+      <button class="btn-green" (click)="onEditClient()">Editar</button>
+      <button class="btn-red" (click)="deleteClient()">Eliminar</button>
+      <button class="btn-grey" (click)="hideEditOrDelete()">Ocultar</button>
+    </div>
 
     </div>
     
+  </div>
+  <div class="error-alert">
+    Ha ocurrido un error
   </div>
   <div class="create-edit">
     <div class="list" >
@@ -90,3 +98,4 @@
 
   <button routerLink="" class="btn-red">Volver</button>
 </div>
+<div class="spacer"></div>

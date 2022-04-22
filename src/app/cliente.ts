@@ -6,6 +6,7 @@ export class Cliente {
     fecha_nac: Date;
     direccion: string;
     telefono: string;
+    borrado: boolean;
 
     
     constructor(documento: string, nombre: string, apellido: string, fecha_nac: Date, direccion: string, telefono: string, id: Number) {
@@ -16,6 +17,7 @@ export class Cliente {
         this.fecha_nac = fecha_nac;
         this.direccion = direccion;
         this.telefono = telefono;
+        this.borrado = false;
     }
 
     

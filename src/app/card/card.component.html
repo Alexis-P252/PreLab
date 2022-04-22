@@ -1,6 +1,6 @@
 <div class="card">
+    <mat-icon *ngIf="title == 'Clientes'" class="icon">account_circle</mat-icon>
+    <mat-icon *ngIf="title == 'Productos'" class="icon">category</mat-icon>
+    <mat-icon *ngIf="title == 'Ventas'" class="icon">shopping_cart</mat-icon>
     <h3>{{title}}</h3>
-    <mat-icon *ngIf="title == 'Clientes'">account_circle</mat-icon>
-    <mat-icon *ngIf="title == 'Productos'">category</mat-icon>
-    <mat-icon *ngIf="title == 'Ventas'">shopping_cart</mat-icon>
 </div>

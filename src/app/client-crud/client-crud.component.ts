@@ -46,12 +46,34 @@ export class ClientCrudComponent implements OnInit {
       direccion: "",
       telefono: "",
     }
+
+    //RECARGAR LISTA DE CLIENTES
+    this.listClients();
   }
 
-  onDeleteClient = () => {
+  //ELIMINAR CLIENTE
+  deleteClient(){
+    // OBTENGO EL ARREGLO DE CLIENTES DEL LOCAL STORAGE
+    this.clientes = JSON.parse(localStorage.getItem("clientes") || "[]");
 
+    //BUSCO EL CLIENTE A ELIMINAR
+    let index = this.clientes.findIndex(client => client.id == this.currentClient.id);
+
+    //ELIMINO EL CLIENTE
+    this.clientes[index].borrado = true;
+
+    //GUARDO EL ARREGLO DE CLIENTES EN EL LOCAL STORAGE
+    localStorage.setItem("clientes", JSON.stringify(this.clientes));
+
+    //RECARGO LA LISTA DE CLIENTES
+    this.listClients();
+
+    //ESCONDO EL FORMULARIO DE EDICION O BORRADO
+    this.hideEditOrDelete();
   }
 
+
+  //EDITAR CLIENTE
   onEditClient = () => {
     let obj: Cliente = this.clientes.find(o => o.id === this.currentClient.id)!;
     obj.documento = this.currentClient.documento;
@@ -66,6 +88,8 @@ export class ClientCrudComponent implements OnInit {
 
   }
 
+
+  //SELECCIONAR CLIENTE
   selectClient(client: Cliente){
 
     // HAGO UNA COPIA DEL CLIENTE SELECCIONADO EN LA LISTA
@@ -75,15 +99,17 @@ export class ClientCrudComponent implements OnInit {
     
   }
 
+  //LISTAR CLIENTES
   listClients(){
     // OBTENGO EL ARREGLO DE CLIENTES DEL LOCAL STORAGE
     this.clientes = JSON.parse(localStorage.getItem("clientes") || "[]");
+    this.clientes = this.clientes.filter(client => client.borrado == false);
   }
 
+  //ESCONDER FORMULARIO DE EDICION O BORRADO
   hideEditOrDelete(){
     document.getElementById("editOrDelete")!.style.display = "none"; 
   }
-
   
 
   constructor() { }
