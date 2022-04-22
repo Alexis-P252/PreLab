@@ -72,6 +72,15 @@ export class ClientCrudComponent implements OnInit {
     this.hideEditOrDelete();
   }
 
+  //VALIDAR FORMULARIO
+  validarFormulario(){
+    if(this.formulario.documento == "" || this.formulario.nombre == "" || this.formulario.apellido == "" || this.formulario.fecha_nac == null || this.formulario.direccion == "" || this.formulario.telefono == ""){
+      return false;
+    }else{
+      return true;
+    }
+  }
+
 
   //EDITAR CLIENTE
   onEditClient = () => {
