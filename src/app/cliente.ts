@@ -3,13 +3,13 @@ export class Cliente {
     documento: string;
     nombre: string;
     apellido: string;
-    fecha_nac: Date;
+    fecha_nac: any;
     direccion: string;
     telefono: string;
     borrado: boolean;
 
     
-    constructor(documento: string, nombre: string, apellido: string, fecha_nac: Date, direccion: string, telefono: string, id: Number) {
+    constructor(documento: string, nombre: string, apellido: string, fecha_nac: any, direccion: string, telefono: string, id: Number) {
         this.id = id
         this.documento = documento;
         this.nombre = nombre;

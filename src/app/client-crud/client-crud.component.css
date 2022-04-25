@@ -60,6 +60,10 @@ ul {
     display: none;
 }
 
+#client-confirmation {
+    display:none;
+}
+
 @media screen and (max-width: 600px) {
     .create-edit{
         flex-direction: column;
@@ -70,4 +74,4 @@ ul {
     .modifications{
         width: 90%;
     }
-    }
+}

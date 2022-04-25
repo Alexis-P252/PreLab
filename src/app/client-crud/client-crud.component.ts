@@ -16,7 +16,7 @@ export class ClientCrudComponent implements OnInit {
     documento: "",
     nombre: "",
     apellido: "",
-    fecha_nac: new Date(),
+    fecha_nac: null,
     direccion: "",
     telefono: "",
   }
@@ -27,7 +27,6 @@ export class ClientCrudComponent implements OnInit {
     //OBTENER ID AUTOINCREMENTAL
     this.clientes = JSON.parse(localStorage.getItem("clientes") || "[]");
     let id = this.clientes.length;
-    console.log(id)
 
     //AGREGAR NUEVO ARREGLO DE CLIENTES
     let nuevoCliente = new Cliente(this.formulario.documento, this.formulario.nombre, this.formulario.apellido, this.formulario.fecha_nac, this.formulario.direccion, this.formulario.telefono, id);
@@ -42,13 +41,23 @@ export class ClientCrudComponent implements OnInit {
       documento: "",
       nombre: "",
       apellido: "",
-      fecha_nac: new Date(),
+      fecha_nac: null,
       direccion: "",
       telefono: "",
     }
 
     //RECARGAR LISTA DE CLIENTES
     this.listClients();
+
+    //OBTENER DIV ALERTA DOM
+    let alerta = document.getElementById("client-confirmation")!;
+    alerta.innerHTML = "Cliente registrado correctamente";
+    alerta.style.display = "flex";
+
+    //MOSTRAR ALERTA POR 5 SEGUNDOS
+    setTimeout(() => {
+      alerta.style.display = "none";
+    }, 5000);
   }
 
   //ELIMINAR CLIENTE
@@ -70,11 +79,30 @@ export class ClientCrudComponent implements OnInit {
 
     //ESCONDO EL FORMULARIO DE EDICION O BORRADO
     this.hideEditOrDelete();
+
+    //OBTENER DIV ALERTA DOM
+    let alerta = document.getElementById("client-confirmation")!;
+    alerta.innerHTML = "Cliente eliminado correctamente";
+    alerta.style.display = "flex";
+
+    //MOSTRAR ALERTA POR 5 SEGUNDOS
+    setTimeout(() => {
+      alerta.style.display = "none";
+    }, 5000);
   }
 
-  //VALIDAR FORMULARIO
+  //VALIDAR FORMULARIO DE REGISTRO
   validarFormulario(){
     if(this.formulario.documento == "" || this.formulario.nombre == "" || this.formulario.apellido == "" || this.formulario.fecha_nac == null || this.formulario.direccion == "" || this.formulario.telefono == ""){
+      return false;
+    }else{
+      return true;
+    }
+  }
+
+    //VALIDAR FORMULARIO DE EDICION
+  validarFormularioEdit(){
+    if(this.currentClient.documento == "" || this.currentClient.nombre == "" || this.currentClient.apellido == "" || this.currentClient.fecha_nac == null || this.currentClient.direccion == "" || this.currentClient.telefono == ""){
       return false;
     }else{
       return true;
@@ -94,7 +122,15 @@ export class ClientCrudComponent implements OnInit {
     localStorage.setItem("clientes", JSON.stringify(this.clientes));
     this.hideEditOrDelete();
     
+    //OBTENER DIV ALERTA DOM
+    let alerta = document.getElementById("client-confirmation")!;
+    alerta.innerHTML = "Cliente editado correctamente";
+    alerta.style.display = "flex";
 
+    //MOSTRAR ALERTA POR 5 SEGUNDOS
+    setTimeout(() => {
+      alerta.style.display = "none";
+    }, 5000);
   }
 
 
@@ -104,7 +140,7 @@ export class ClientCrudComponent implements OnInit {
     // HAGO UNA COPIA DEL CLIENTE SELECCIONADO EN LA LISTA
     this.currentClient = JSON.parse(JSON.stringify(client)) ;
     document.getElementById("editOrDelete")!.style.display = "flex"; 
-    
+    console.log(this.currentClient);
     
   }
 

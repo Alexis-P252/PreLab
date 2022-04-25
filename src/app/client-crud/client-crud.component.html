@@ -1,5 +1,5 @@
 <div class="container" ng-Init="listClients()">
-  <div class="success-alert">
+  <div class="success-alert" id="client-confirmation">
     Cambios guardados correctamente
   </div>
   <div class="create-edit">
@@ -36,7 +36,7 @@
         name="telefono"
         [(ngModel)]="formulario.telefono"
       />
-      <button class="btn-green" (click)="onSaveClient()">Registrar</button>
+      <button class="btn-green" (click)="onSaveClient()" [disabled]="!validarFormulario()">Registrar</button>
     </div>
     <div class="modifications" id="editOrDelete">
       <h3>Administrar clientes</h3>
@@ -72,16 +72,13 @@
       [(ngModel)]="currentClient.telefono"
     />
     <div class="button-container">
-      <button class="btn-green" (click)="onEditClient()">Editar</button>
+      <button class="btn-green" (click)="onEditClient()" [disabled]="!validarFormularioEdit()">Editar</button>
       <button class="btn-red" (click)="deleteClient()">Eliminar</button>
       <button class="btn-grey" (click)="hideEditOrDelete()">Ocultar</button>
     </div>
 
     </div>
     
-  </div>
-  <div class="error-alert">
-    Ha ocurrido un error
   </div>
   <div class="create-edit">
     <div class="list" >
