@@ -4,6 +4,7 @@ export class Producto {
     descripcion: string;
     precio: Number;
     imagen: string | null;
+    borrado: boolean;
 
     
     constructor(nombre: string, descripcion: string, precio: Number, imagen: string | null, id: Number) {
@@ -12,5 +13,6 @@ export class Producto {
         this.descripcion = descripcion;
         this.precio = precio;
         this.imagen = imagen;
+        this.borrado = false;    
     }
 }
