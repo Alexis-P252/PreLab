@@ -1,3 +1,52 @@
-<p>sale-crud works!</p>
-
-<button routerLink='' class="btn-red"> Volver </button>
+<div class="container" ng-Init="listProducts()">
+    <div class="success-alert" id="product-confirmation">
+      Cambios guardados correctamente
+    </div>
+    <div class="create-edit">
+      <div class="modifications">
+        <h3>📘 Lista de productos</h3>
+        <p>Seleccione uno 👇</p>
+        <div class="list" >
+            <ul class="productList" id="productList">
+              <li 
+              *ngFor="let product of productos"
+              >
+                ID: {{product.id}} - Nombre: {{product.nombre}} - Precio: {{product.precio}}
+              </li>
+            </ul>
+          </div>
+      </div>
+      <div class="modifications">
+        <h3>📘 Lista de clientes</h3>
+        <p>Seleccione uno 👇</p>
+        <div class="list" >
+            <ul class="productList" id="productList">
+              <li 
+              *ngFor="let client of clients"
+              >
+                ID: {{client.id}} - Nombre: {{client.nombre}} - Precio: {{client.precio}}
+              </li>
+            </ul>
+          </div>
+      </div>
+    </div>
+    <div class="options-selected-container">
+      <div class="product-selected">
+        <h3>Producto seleccionado</h3>
+        <p>ID: id - Nombre: nombre - Precio: precio</p>
+      </div>
+        <div class="client-selected">
+            <h3>Cliente seleccionado</h3>
+            <p>ID: id - Nombre: nombre - Precio: precio</p>
+    </div>
+    </div>
+    <div class="options-selected-container">
+        <div class="date-selected">
+            <h3>Fecha de venta</h3>
+            <input type="date" name="fecha" class="input-fecha"/>
+        </div>
+    </div>
+  
+    <button routerLink="" class="btn-red">Volver</button>
+  </div>
+  <div class="spacer"></div>

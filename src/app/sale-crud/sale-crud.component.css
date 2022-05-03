@@ -1,0 +1,129 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    background: rgb(241, 241, 241);
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+p{
+    margin:0;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    margin: 20px;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+}
+
+li {
+    border-bottom: 1px solid rgb(228, 228, 228);
+    margin: 0px 20px 5px 20px;
+    list-style-type: none;
+    cursor: pointer;
+}
+
+ul {
+    margin: 0;
+    padding: 20px;
+}
+
+.button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.create-edit{
+    display: flex;
+}
+
+.modifications {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    margin: 20px;
+}
+
+.spacer {
+    height: 50px;
+    width: 100%;
+}
+
+#editOrDelete {
+    display: none;
+}
+
+#product-confirmation {
+    display:none;
+}
+
+.options-selected-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.product-selected{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+}
+
+.client-selected{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+}
+
+.date-selected{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.input-fecha{
+    width: 100%;
+    max-width: 700px;
+}
+
+@media screen and (max-width: 600px) {
+    .create-edit{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .modifications{
+        width: 90%;
+    }
+
+    .options-selected-container{
+        flex-direction: column;
+    }
+
+    .product-selected{
+        width: 100%;
+    }
+
+    .client-selected{
+        width: 100%;
+    }
+}
