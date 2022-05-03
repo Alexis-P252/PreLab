@@ -15,6 +15,8 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { ProductCrudComponent } from './product-crud/product-crud.component';
 import { SaleCrudComponent } from './sale-crud/sale-crud.component';
 
+import { DataService } from './data.service';
+
 const routes: Route[] = [
   {path: '', component: WelcomeComponent},
   {path: 'clients', component: ClientCrudComponent},
@@ -42,7 +44,7 @@ const routes: Route[] = [
     RouterModule.forRoot(routes),
     FormsModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

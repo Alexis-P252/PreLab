@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Cliente } from '../cliente';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-client-crud',
@@ -9,6 +10,7 @@ import { Cliente } from '../cliente';
 
 export class ClientCrudComponent implements OnInit {
 
+  data :DataService = new DataService();
   clientes: Cliente[] = [];
   currentClient: Cliente = {} as Cliente;
 
@@ -47,7 +49,7 @@ export class ClientCrudComponent implements OnInit {
     }
 
     //RECARGAR LISTA DE CLIENTES
-    this.listClients();
+    this.clientes =  this.data.getClientes();
 
     //OBTENER DIV ALERTA DOM
     let alerta = document.getElementById("client-confirmation")!;
@@ -62,20 +64,11 @@ export class ClientCrudComponent implements OnInit {
 
   //ELIMINAR CLIENTE
   deleteClient(){
-    // OBTENGO EL ARREGLO DE CLIENTES DEL LOCAL STORAGE
-    this.clientes = JSON.parse(localStorage.getItem("clientes") || "[]");
-
-    //BUSCO EL CLIENTE A ELIMINAR
-    let index = this.clientes.findIndex(client => client.id == this.currentClient.id);
-
-    //ELIMINO EL CLIENTE
-    this.clientes[index].borrado = true;
-
-    //GUARDO EL ARREGLO DE CLIENTES EN EL LOCAL STORAGE
-    localStorage.setItem("clientes", JSON.stringify(this.clientes));
-
+  
+    this.data.deleteCliente(this.currentClient.id)
+  
     //RECARGO LA LISTA DE CLIENTES
-    this.listClients();
+    this.clientes =  this.data.getClientes();
 
     //ESCONDO EL FORMULARIO DE EDICION O BORRADO
     this.hideEditOrDelete();
@@ -112,14 +105,7 @@ export class ClientCrudComponent implements OnInit {
 
   //EDITAR CLIENTE
   onEditClient = () => {
-    let obj: Cliente = this.clientes.find(o => o.id === this.currentClient.id)!;
-    obj.documento = this.currentClient.documento;
-    obj.nombre = this.currentClient.nombre;
-    obj.apellido = this.currentClient.apellido;
-    obj.fecha_nac = this.currentClient.fecha_nac;
-    obj.direccion = this.currentClient.direccion;
-    obj.telefono = this.currentClient.telefono;
-    localStorage.setItem("clientes", JSON.stringify(this.clientes));
+     this.data.editCliente(this.currentClient);
     this.hideEditOrDelete();
     
     //OBTENER DIV ALERTA DOM
@@ -144,12 +130,7 @@ export class ClientCrudComponent implements OnInit {
     
   }
 
-  //LISTAR CLIENTES
-  listClients(){
-    // OBTENGO EL ARREGLO DE CLIENTES DEL LOCAL STORAGE
-    this.clientes = JSON.parse(localStorage.getItem("clientes") || "[]");
-    this.clientes = this.clientes.filter(client => client.borrado == false);
-  }
+
 
   //ESCONDER FORMULARIO DE EDICION O BORRADO
   hideEditOrDelete(){
@@ -160,7 +141,8 @@ export class ClientCrudComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.listClients();
+    this.clientes =  this.data.getClientes();
+    
   }
 
 }

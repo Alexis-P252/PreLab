@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Producto } from '../producto';
+import {DataService} from '../data.service';
 
 @Component({
   selector: 'app-product-crud',
@@ -8,6 +9,7 @@ import { Producto } from '../producto';
 })
 export class ProductCrudComponent implements OnInit {
 
+  data: DataService = new DataService();
   productos: Producto[] = [];
   currentProduct: Producto = {} as Producto;
 
@@ -153,6 +155,7 @@ export class ProductCrudComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.data.
     this.listProducts();
   }
 
