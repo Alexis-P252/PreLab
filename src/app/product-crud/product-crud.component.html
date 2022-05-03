@@ -1,2 +1,67 @@
-<p>product-crud works!</p>
-<button routerLink='' class="btn-red"> Volver </button>
+<div class="container" ng-Init="listProducts()">
+    <div class="success-alert" id="product-confirmation">
+      Cambios guardados correctamente
+    </div>
+    <div class="create-edit">
+      <div class="modifications">
+        <h3>Registrar producto</h3>
+        <input
+          placeholder="Nombre"
+          name="nombre"
+          [(ngModel)]="formulario.nombre"
+        />
+        <input
+          placeholder="Descripcion"
+          name="descripcion"
+          [(ngModel)]="formulario.descripcion"
+        />
+        <input
+          placeholder="Precio"
+          name="precio"
+          [(ngModel)]="formulario.precio"
+        />
+       
+        <button class="btn-green" (click)="onSaveProduct()" [disabled]="!validarFormulario()">Registrar</button>
+      </div>
+      <div class="modifications" id="editOrDelete">
+        <h3>Administrar productos</h3>
+        <input
+        placeholder="Nombre"
+        name="nombre"
+        [(ngModel)]="currentProduct.nombre"
+      />
+      <input
+        placeholder="Descripcion"
+        name="descripcion"
+        [(ngModel)]="currentProduct.descripcion"
+      />
+      <input
+        placeholder="Precio"
+        name="precio"
+        [(ngModel)]="currentProduct.precio"
+      />
+      <div class="button-container">
+        <button class="btn-green" (click)="onEditProduct()" [disabled]="!validarFormularioEdit()">Editar</button>
+        <button class="btn-red" (click)="deleteProduct()">Eliminar</button>
+        <button class="btn-grey" (click)="hideEditOrDelete()">Ocultar</button>
+      </div>
+  
+      </div>
+      
+    </div>
+    <div class="create-edit">
+      <div class="list" >
+        <ul class="productList" id="productList">
+          <li 
+          *ngFor="let product of productos"
+          (click) = "selectProduct(product)"
+          >
+            ID: {{product.id}} - Nombre: {{product.nombre}} - Precio: {{product.precio}}
+          </li>
+        </ul>
+      </div>
+    </div>
+  
+    <button routerLink="" class="btn-red">Volver</button>
+  </div>
+  <div class="spacer"></div>
