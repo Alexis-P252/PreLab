@@ -1,6 +1,9 @@
 <div class="container" ng-Init="listProducts()">
-    <div class="success-alert" id="product-confirmation">
-      Cambios guardados correctamente
+    <div class="success-alert" id="sale-confirmation">
+      Venta registrada correctamente
+    </div>
+    <div class="error-alert" id="sale-error">
+      No se ha registrado su venta. Seleccione un cliente, un producto y una fecha
     </div>
     <div class="create-edit">
       <div class="modifications">
@@ -54,7 +57,18 @@
     <button class="btn-green" (click) = "RegistroVenta(fecha.value)" >
       Registrar venta
     </button>
-  
+    <div class="sales-list">
+      <h3>💵 Lista de ventas</h3>
+      <div class="list" >
+        <ul class="productList" id="productList">
+          <li 
+          *ngFor="let venta of ventas"
+          >
+            ID: {{venta.id}} - Producto: {{venta.nombre_producto}} - Comprador: {{venta.nombre_cliente}} - Fecha: {{venta.fecha}}
+          </li>
+        </ul>
+      </div>
+    </div>
     <button routerLink="" class="btn-red">Volver</button>
   </div>
   <div class="spacer"></div>
